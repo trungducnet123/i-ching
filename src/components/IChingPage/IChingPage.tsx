@@ -2,13 +2,8 @@
 import styles from './IChingPage.module.css';
 
 import { Component } from 'react';
-import { Hexagram } from '../../utils/utils';
-import Hex from '../Hex';
-import {
-  HexContainer,
-  IChingPageWrapper,
-  TextContainer,
-} from './IChingPage.css';
+import { Hexagram } from '@utils/utils';
+import { Hex } from '@components/Hex/Hex';
 
 interface State {
   hexagram: Hexagram;
