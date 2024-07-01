@@ -12,13 +12,13 @@ const IChingPage = () => {
   const changingHex = hexagram.getChangingHex();
 
   return (
-    <main className={styles.IChingPageWrapper}>
-      <section className={styles.HexContainer}>
+    <main className={styles.iChingPageWrapper}>
+      <section className={styles.hexContainer}>
         <Hex hexagram={hexagram} />
 
         {changingHex && <Hex hexagram={changingHex} />}
       </section>
-      <section className={styles.TextContainer}>
+      <section className={styles.textContainer}>
         {hexagram.hexagramNumber}. {hexagram.hexagramName}
         <br />
         <br />
