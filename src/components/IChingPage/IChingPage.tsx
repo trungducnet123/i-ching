@@ -1,5 +1,5 @@
 'use client';
-import dynamic from 'next/dynamic';
+import styles from './IChingPage.module.css';
 
 import { Component } from 'react';
 import { Hexagram } from '../../utils/utils';
@@ -31,13 +31,13 @@ class IChingPage extends Component<any, State> {
     const { hexagram, changingHex } = this.state;
 
     return (
-      <IChingPageWrapper>
-        <HexContainer>
+      <main className={styles.IChingPageWrapper}>
+        <section className={styles.HexContainer}>
           <Hex hexagram={hexagram} />
 
           {changingHex && <Hex hexagram={changingHex} />}
-        </HexContainer>
-        <TextContainer>
+        </section>
+        <section className={styles.TextContainer}>
           {hexagram.hexagramNumber}. {hexagram.hexagramName}
           <br />
           <br />
@@ -68,8 +68,8 @@ class IChingPage extends Component<any, State> {
               {changingHex.text}
             </>
           )}
-        </TextContainer>
-      </IChingPageWrapper>
+        </section>
+      </main>
     );
   }
 }
