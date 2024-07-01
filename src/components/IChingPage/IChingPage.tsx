@@ -1,72 +1,57 @@
 'use client';
+
 import styles from './IChingPage.module.css';
 
-import { Component } from 'react';
+import { useState } from 'react';
 import { Hexagram } from '@utils/utils';
 import { Hex } from '@components/Hex/Hex';
 
-interface State {
-  hexagram: Hexagram;
-  changingHex: Hexagram | null;
-}
+const IChingPage = () => {
+  const [hexagram] = useState(new Hexagram());
 
-class IChingPage extends Component<any, State> {
-  constructor(props: any) {
-    super(props);
+  const changingHex = hexagram.getChangingHex();
 
-    const hex = new Hexagram();
+  return (
+    <main className={styles.IChingPageWrapper}>
+      <section className={styles.HexContainer}>
+        <Hex hexagram={hexagram} />
 
-    this.state = {
-      hexagram: hex,
-      changingHex: hex.getChangingHex(),
-    };
-  }
-
-  render() {
-    const { hexagram, changingHex } = this.state;
-
-    return (
-      <main className={styles.IChingPageWrapper}>
-        <section className={styles.HexContainer}>
-          <Hex hexagram={hexagram} />
-
-          {changingHex && <Hex hexagram={changingHex} />}
-        </section>
-        <section className={styles.TextContainer}>
-          {hexagram.hexagramNumber}. {hexagram.hexagramName}
-          <br />
-          <br />
-          {hexagram.text}
-          {changingHex ? (
-            <>
-              <br />
-              <h1>LINES:</h1>{' '}
-              <ul>
-                {hexagram.changingLinesText.map(line => (
-                  <li key={line}>
-                    {line}
-                    <br />
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            ''
-          )}
-          <br />
-          <hr />
-          {changingHex && (
-            <>
-              {changingHex.hexagramNumber}. {changingHex.hexagramName}
-              <br />
-              <br />
-              {changingHex.text}
-            </>
-          )}
-        </section>
-      </main>
-    );
-  }
-}
+        {changingHex && <Hex hexagram={changingHex} />}
+      </section>
+      <section className={styles.TextContainer}>
+        {hexagram.hexagramNumber}. {hexagram.hexagramName}
+        <br />
+        <br />
+        {hexagram.text}
+        {changingHex ? (
+          <>
+            <br />
+            <h1>LINES:</h1>{' '}
+            <ul>
+              {hexagram.changingLinesText.map(line => (
+                <li key={line}>
+                  {line}
+                  <br />
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          ''
+        )}
+        <br />
+        <hr />
+        {changingHex && (
+          <>
+            {changingHex.hexagramNumber}. {changingHex.hexagramName}
+            <br />
+            <br />
+            {changingHex.text}
+          </>
+        )}
+      </section>
+    </main>
+  );
+};
 
 export default IChingPage;
