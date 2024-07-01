@@ -157,7 +157,7 @@ export class Trigram {
       (line: Line) => line === Line.BrokenPlus || line === Line.StraightPlus
     );
     this.changingLines = this.lines.reduce<number[]>(
-      (acc: number[], el: Line, i: number, array: Line[]) => {
+      (acc: number[], el: Line, i: number) => {
         if (el == Line.BrokenPlus || el === Line.StraightPlus) {
           acc.push(i);
         }
