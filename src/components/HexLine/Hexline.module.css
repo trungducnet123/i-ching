@@ -1,0 +1,28 @@
+.straight {
+  height: 30px;
+  width: 200px;
+  background-color: darkslategrey;
+  margin: 20px auto;
+}
+
+.straightPlus {
+  background-color: tomato;
+}
+
+.brokenContainer {
+  display: flex;
+  height: 30px;
+  width: 200px;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+
+.brokenSegment {
+  height: 100%;
+  width: 33%;
+  background-color: darkslategrey;
+}
+
+.brokenSegmentPlus {
+  background-color: tomato;
+}

@@ -1,5 +1,5 @@
 import { Hexagram, Line } from '@utils/utils';
-import HexLine from '../HexLine';
+import { HexLine } from '../HexLine/HexLine';
 import styles from './Hex.module.css';
 
 interface Props {
