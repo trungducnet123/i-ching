@@ -10,14 +10,14 @@ import { useViewport } from '../../hooks/useViewport';
 
 // Fix types for wrapper to accept children
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const MyReactRough = ReactRough as (props: any) => React.JSX.Element;
+export const MyReactRough = ReactRough as (props: any) => React.JSX.Element;
+
+const hexagram = new Hexagram();
+
+const changingHex = hexagram.getChangingHex();
 
 const IChingPage = () => {
-  const [hexagram] = useState(new Hexagram());
-
   const { height, width } = useViewport();
-
-  const changingHex = hexagram.getChangingHex();
 
   return (
     <main className={styles.iChingPageWrapper}>
@@ -30,10 +30,9 @@ const IChingPage = () => {
               x={0}
               y={0}
               fill="#d0d7de"
-              roughness={3}
+              roughness={5}
               stroke="none"
-              hachureGap={64}
-              fillStyle="zigzag"
+              hachureGap={1}
             />
           </MyReactRough>
         </div>
