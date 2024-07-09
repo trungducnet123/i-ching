@@ -2,7 +2,6 @@
 
 import styles from './IChingPage.module.css';
 
-import { useState } from 'react';
 import { Hexagram } from '@utils/utils';
 import { Hex } from '@components/Hex/Hex';
 import ReactRough, { Rectangle } from 'rough-react-wrapper';
