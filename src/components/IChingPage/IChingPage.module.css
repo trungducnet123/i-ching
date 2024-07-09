@@ -24,6 +24,11 @@
   font-family: Garamond, serif;
   white-space: pre-wrap;
   text-align: left;
+  font-size: 26px;
+  padding: 64px;
+  max-width: 85%;
+  background-color: rgba(230, 217, 224, 0.8);
+  margin: 64px;
 }
 
 .background {
