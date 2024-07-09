@@ -12,8 +12,8 @@ export const Hex = ({ hexagram }: Props) => (
       className={styles.title}
     >{`${hexagram.hexagramNumber}: ${hexagram.hexagramName}`}</h1>
 
-    {hexagram.getLinesDescending().map((line: Line) => (
-      <HexLine line={line} key={line + Math.random()} />
+    {hexagram.getLinesDescending().map((line: Line, i: number) => (
+      <HexLine line={line} key={hexagram.hexagramNumber + i} />
     ))}
   </div>
 );
