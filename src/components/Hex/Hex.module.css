@@ -1,6 +1,7 @@
 .title {
   font-family: Garamond, serif;
-  font-size: 45px;
+  font-size: 28px;
   line-height: 100%;
-  min-height: 90px;
+  margin-bottom: 34px;
+  text-align: center;
 }

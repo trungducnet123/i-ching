@@ -1,15 +1,9 @@
-.straight {
-  height: 30px;
-  width: 200px;
-  margin: 20px auto;
-}
-
-.brokenContainer {
+.line__container {
   display: flex;
   height: 30px;
   width: 200px;
   justify-content: space-between;
-  margin: 20px auto;
+  margin: 18px auto;
 }
 
 .brokenSegment {

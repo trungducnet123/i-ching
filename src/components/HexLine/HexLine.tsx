@@ -51,7 +51,7 @@ const BrokenLine = ({
   roughness: number;
   fill: string;
 }) => (
-  <div className={styles.brokenContainer}>
+  <div className={styles.line__container}>
     <div className={`${styles.brokenSegment} ${styles.brokenSegmentPlus}`}>
       <MyReactRough renderer={'svg'} width={width * 0.33} height={height}>
         <Rectangle
@@ -88,7 +88,7 @@ const StraightLine = ({
   roughness: number;
   fill: string;
 }) => (
-  <div className={`${styles.straight} ${styles.straightPlus}`}>
+  <div className={`${styles.line__container}`}>
     <MyReactRough renderer={'svg'} width={width} height={height}>
       <Rectangle
         width={width}
