@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Line } from '@utils/utils';
 
 import styles from './Hexline.module.css';
@@ -18,30 +18,30 @@ const FILL_STYLE = 'none';
 const INITIAL_ROUGHNESS = 2;
 
 export const HexLine = ({ line, order }: Props) => {
-  const [animatedRoughness, setAnimatedRoughness] = useState(INITIAL_ROUGHNESS);
+  // const [animatedRoughness, setAnimatedRoughness] = useState(INITIAL_ROUGHNESS);
 
-  useEffect(() => {
-    if ([Line.BrokenPlus, Line.StraightPlus].includes(line)) {
-      let intervalId: NodeJS.Timeout;
-      const timeoutId = setTimeout(() => {
-        intervalId = setInterval(() => {
-          setAnimatedRoughness(a =>
-            a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
-          );
-        }, 200);
-      }, 6000);
-      // const intervalId = setInterval(() => {
-      //   setAnimatedRoughness(a =>
-      //     a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
-      //   );
-      // }, 200);
+  // useEffect(() => {
+  //   if ([Line.BrokenPlus, Line.StraightPlus].includes(line)) {
+  //     let intervalId: NodeJS.Timeout;
+  //     const timeoutId = setTimeout(() => {
+  //       intervalId = setInterval(() => {
+  //         setAnimatedRoughness(a =>
+  //           a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
+  //         );
+  //       }, 200);
+  //     }, 6000);
+  //     // const intervalId = setInterval(() => {
+  //     //   setAnimatedRoughness(a =>
+  //     //     a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
+  //     //   );
+  //     // }, 200);
 
-      return () => {
-        clearInterval(intervalId);
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [line]);
+  //     return () => {
+  //       clearInterval(intervalId);
+  //       clearTimeout(timeoutId);
+  //     };
+  //   }
+  // }, [line]);
 
   switch (line) {
     case Line.Broken:

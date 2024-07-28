@@ -22,12 +22,7 @@ const IChingPage = () => {
     <main className={styles.iChingPageWrapper}>
       {height && width && (
         <div className="background">
-          <MyReactRough
-            className="foobar"
-            renderer={'svg'}
-            width={width}
-            height={height}
-          >
+          <MyReactRough renderer={'svg'} width={width} height={height}>
             <Rectangle
               width={width}
               height={height}
