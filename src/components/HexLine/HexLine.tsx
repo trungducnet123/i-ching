@@ -7,38 +7,73 @@ import { Rectangle } from 'rough-react-wrapper';
 
 interface Props {
   line: Line;
+  order: number;
 }
 
 const width = 200;
 const height = 30;
 
-export const HexLine = ({ line }: Props) => {
-  const INITIAL_ROUGHNESS = 5;
+const FILL_STYLE = 'none';
+
+const INITIAL_ROUGHNESS = 2;
+
+export const HexLine = ({ line, order }: Props) => {
   const [animatedRoughness, setAnimatedRoughness] = useState(INITIAL_ROUGHNESS);
 
   useEffect(() => {
     if ([Line.BrokenPlus, Line.StraightPlus].includes(line)) {
-      const intervalId = setInterval(() => {
-        setAnimatedRoughness(a =>
-          a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
-        );
-      }, 200);
+      let intervalId: NodeJS.Timeout;
+      const timeoutId = setTimeout(() => {
+        intervalId = setInterval(() => {
+          setAnimatedRoughness(a =>
+            a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
+          );
+        }, 200);
+      }, 6000);
+      // const intervalId = setInterval(() => {
+      //   setAnimatedRoughness(a =>
+      //     a === INITIAL_ROUGHNESS ? a + 1 : INITIAL_ROUGHNESS
+      //   );
+      // }, 200);
 
       return () => {
         clearInterval(intervalId);
+        clearTimeout(timeoutId);
       };
     }
   }, [line]);
 
   switch (line) {
     case Line.Broken:
-      return <BrokenLine fill="black" roughness={4} />;
+      return (
+        <BrokenLine fill="black" roughness={INITIAL_ROUGHNESS} order={order} />
+      );
     case Line.BrokenPlus:
-      return <BrokenLine fill="tomato" roughness={animatedRoughness} />;
+      return (
+        <BrokenLine
+          fill="tomato"
+          roughness={INITIAL_ROUGHNESS}
+          order={order}
+          className="changing"
+        />
+      );
     case Line.Straight:
-      return <StraightLine fill="black" roughness={4} />;
+      return (
+        <StraightLine
+          fill="black"
+          roughness={INITIAL_ROUGHNESS}
+          order={order}
+        />
+      );
     case Line.StraightPlus:
-      return <StraightLine fill="tomato" roughness={animatedRoughness} />;
+      return (
+        <StraightLine
+          fill="tomato"
+          roughness={INITIAL_ROUGHNESS}
+          order={order}
+          className="changing"
+        />
+      );
     default:
       return null;
   }
@@ -47,12 +82,19 @@ export const HexLine = ({ line }: Props) => {
 const BrokenLine = ({
   roughness,
   fill,
+  order,
+  className,
 }: {
   roughness: number;
   fill: string;
+  order: number;
+  className?: string;
 }) => (
-  <div className={styles.line__container}>
-    <div className={`${styles.brokenSegment} ${styles.brokenSegmentPlus}`}>
+  <div
+    className={`${styles.line__container} ${className}`}
+    style={{ '--order': order } as React.CSSProperties}
+  >
+    <div className={`${styles.brokenSegment}  ${className ? className : ''}`}>
       <MyReactRough renderer={'svg'} width={width * 0.33} height={height}>
         <Rectangle
           width={width * 0.33}
@@ -61,11 +103,11 @@ const BrokenLine = ({
           y={0}
           fill={fill}
           roughness={roughness}
-          fillStyle="cross-hatch"
+          fillStyle={FILL_STYLE}
         />
       </MyReactRough>
     </div>
-    <div className={`${styles.brokenSegment} ${styles.brokenSegmentPlus}`}>
+    <div className={`${styles.brokenSegment}  ${className ? className : ''}`}>
       <MyReactRough renderer={'svg'} width={width * 0.33} height={height}>
         <Rectangle
           width={width * 0.33}
@@ -74,7 +116,7 @@ const BrokenLine = ({
           y={0}
           fill={fill}
           roughness={roughness}
-          fillStyle="cross-hatch"
+          fillStyle={FILL_STYLE}
         />
       </MyReactRough>
     </div>
@@ -84,11 +126,18 @@ const BrokenLine = ({
 const StraightLine = ({
   roughness,
   fill,
+  order,
+  className,
 }: {
   roughness: number;
   fill: string;
+  order: number;
+  className?: string;
 }) => (
-  <div className={`${styles.line__container}`}>
+  <div
+    className={`${styles.line__container} ${className ? className : ''}`}
+    style={{ '--order': order } as React.CSSProperties}
+  >
     <MyReactRough renderer={'svg'} width={width} height={height}>
       <Rectangle
         width={width}
@@ -97,7 +146,7 @@ const StraightLine = ({
         y={0}
         fill={fill}
         roughness={roughness}
-        fillStyle="cross-hatch"
+        fillStyle={FILL_STYLE}
       />
     </MyReactRough>
   </div>

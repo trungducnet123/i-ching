@@ -223,12 +223,17 @@ export class Hexagram {
   upperTrigram: Trigram;
   hexagramNumber: number;
   hexagramName: string;
-  changing: boolean;
+  isChanging: boolean;
+  isChanged: boolean;
   text: string;
   changingLines: number[];
   changingLinesText: string[];
 
-  constructor(lowerTrigram?: Trigram, upperTrigram?: Trigram) {
+  constructor(
+    lowerTrigram?: Trigram,
+    upperTrigram?: Trigram,
+    isChanged: boolean = false
+  ) {
     this.lowerTrigram = lowerTrigram || new Trigram();
     this.upperTrigram = upperTrigram || new Trigram();
     this.hexagramNumber =
@@ -236,7 +241,8 @@ export class Hexagram {
         this.upperTrigram.trigramLookup
       ];
     this.hexagramName = HEXAGRAM_NAMES[this.hexagramNumber];
-    this.changing = this.lowerTrigram.changing || this.upperTrigram.changing;
+    this.isChanging = this.lowerTrigram.changing || this.upperTrigram.changing;
+    this.isChanged = isChanged;
     this.text = TEXT[this.hexagramNumber].text;
     this.changingLines = [
       ...this.lowerTrigram.changingLines.map(i => i + 1),
@@ -258,12 +264,13 @@ export class Hexagram {
   }
 
   getChangingHex(): Hexagram | null {
-    if (!this.changing) {
+    if (!this.isChanging) {
       return null;
     }
 
     const newLower = new Trigram(this.lowerTrigram.changeLines());
     const newUpper = new Trigram(this.upperTrigram.changeLines());
-    return new Hexagram(newLower, newUpper);
+
+    return new Hexagram(newLower, newUpper, true);
   }
 }

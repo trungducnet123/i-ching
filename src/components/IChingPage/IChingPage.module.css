@@ -27,10 +27,3 @@
   max-width: 85%;
   background-color: rgba(230, 217, 224, 0.8);
 }
-
-.background {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
