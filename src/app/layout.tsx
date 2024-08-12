@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Draw an I Ching hexagram and predict the future. A useful tool to help you learn about the I Ching and explore the Eastern philosophical system.',
 };
 
-export default function RootLayout({
+export default function RootLayout({ 
   children,
 }: Readonly<{
   children: React.ReactNode;
