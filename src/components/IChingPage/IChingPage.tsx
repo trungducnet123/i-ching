@@ -1,11 +1,12 @@
 'use client';
-
+import React, { useEffect } from 'react';
 import styles from './IChingPage.module.css';
 
 import { Hexagram } from '@utils/utils';
 import { Hex } from '@components/Hex/Hex';
 import ReactRough, { Rectangle } from 'rough-react-wrapper';
 import { useViewport } from '../../hooks/useViewport';
+
 
 // Fix types for wrapper to accept children
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
