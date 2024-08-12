@@ -1,12 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
+
 import styles from './IChingPage.module.css';
 
 import { Hexagram } from '@utils/utils';
 import { Hex } from '@components/Hex/Hex';
 import ReactRough, { Rectangle } from 'rough-react-wrapper';
 import { useViewport } from '../../hooks/useViewport';
-
 
 // Fix types for wrapper to accept children
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,21 +17,6 @@ const changingHex = hexagram.getChangingHex();
 
 const IChingPage = () => {
   const { height, width } = useViewport();
-  
-  useEffect(() => {
-    // Create a new script element
-    const script = document.createElement('script');
-    script.src = 'https://tuvi.kabala.vn/js/kabala-text-en.js';
-    script.async = true;
-
-    // Append the script to the body or the specific element
-    document.body.appendChild(script);
-
-    // Cleanup to remove the script when the component unmounts
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <main className={styles.iChingPageWrapper}>
@@ -93,6 +77,7 @@ const IChingPage = () => {
 	  
       {/* Embedding the Kabala widget */}
       <div id="kabala-intro"></div>
+	  <script src="https://tuvi.kabala.vn/js/kabala-text-en.js"></script>
 	  
     </main>
   );
