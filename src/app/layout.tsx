@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Draw the I Ching and predict the future - Kabastro',
-  description: 'Draw I Ching and predict the future. Useful tool to help you learn about I Ching as well as approach the Eastern philosophical system.',
+  description: 'Useful tool to help you learn about I Ching as well as approach the Eastern philosophical system',
 };
 
 export default function RootLayout({
